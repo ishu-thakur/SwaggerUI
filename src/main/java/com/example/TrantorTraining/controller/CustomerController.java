@@ -1,7 +1,7 @@
 package com.example.TrantorTraining.controller;
 
+import com.example.TrantorTraining.dto.CustomerDto;
 import com.example.TrantorTraining.entity.Customer;
-import com.example.TrantorTraining.repo.CustomerRepo;
 import com.example.TrantorTraining.service.CustomerSerivce;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,13 +21,13 @@ public class CustomerController {
     }
 
     @PostMapping("/CustomerDetails")
-    public Customer saveCustomer(@RequestBody Customer customer)
+    public Customer saveCustomer(@RequestBody CustomerDto customerDto)
     {
-        System.out.println("Customer id " + customer.getCustomerId());
-        System.out.println("Customer email " + customer.getEmail());
-        System.out.println("Customer Mobile number " + customer.getMobileNumber());
-        System.out.println("Customer Name " + customer.getName());
-        Customer save = customerSerivce.saveCustomer(customer);
-        return save;
+        System.out.println("Customer id " + customerDto.getCustomerId());
+        System.out.println("Customer email " + customerDto.getEmail());
+        System.out.println("Customer Mobile number " + customerDto.getMobileNumber());
+        System.out.println("Customer Name " + customerDto.getName());
+        Customer customer = customerSerivce.saveCustomer(customerDto);
+        return customer;
     }
 }
